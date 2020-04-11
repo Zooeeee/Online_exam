@@ -1,0 +1,8 @@
+1.发送过来的参数  subject type difficulty count
+2. 先根据subject type difficulty  is_used =1  是个List 通过长度 查询该类题目的剩余个数
+3.如果剩余个数 < count  意味着剩下未被选择的题目不够选 
+则把List中的数据 的 is_used字段 全部置为1 然后随机选
+4.如果剩余个数 >= count 则用方法查 
+
+
+return 带有题目id的数组 一个type
