@@ -9,12 +9,12 @@
         label="#"
         align="center"
         type="index"
-        width="50">
+        min-width="50">
       </el-table-column>
       <!-- 考试名称 -->
       <el-table-column
         label="考试名称"
-        width="300"
+        min-width="250"
         align="center"
         >
         <template slot-scope="scope">
@@ -46,7 +46,7 @@
       <el-table-column
         label="总分数"
         align="center"
-        width="100">
+        min-width ="100">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>各题型分数:
@@ -67,7 +67,7 @@
       <el-table-column
         label="创建者"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.creatorName }}</span>
         </template>
@@ -76,7 +76,7 @@
       <el-table-column
         label="考试时长"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.time }}</span>
         </template>
@@ -84,7 +84,7 @@
       <!-- 操作 -->
       <el-table-column
         label="操作"
-         width="200"
+         min-width="150"
         align="center">
         <template slot-scope="scope">
           <el-button
@@ -123,6 +123,7 @@
 import EditExam from '@/views/Exam/EditExam.vue'
 import util from '@/views/Exam/js/utils.js'
 export default {
+  inject: ['reload'],
   components: { EditExam },
   data () {
     return {
@@ -145,6 +146,7 @@ export default {
   methods: {
     closeED (bool) {
       this.editDialogFormVisible = bool
+      this.reload()
     },
     // 点击编辑
     handleEdit (index, row) {

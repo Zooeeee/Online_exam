@@ -22,6 +22,10 @@
               >
             </el-input>
             </el-form-item>
+            <el-form-item label="考试时长" prop="time" class="timeChoice" >
+              <el-input-number :min="20" :max = "180" :step="5" size="mini" style="width:100px" controls-position="right" v-model="min" ></el-input-number>
+              <span style="font-size:16px;margin-left:10px;">分钟</span>
+            </el-form-item>
           </div >
           <!-- form第2部分 -->
           <div v-show="this.active === 1?true:false">
@@ -95,6 +99,7 @@ export default {
       active: 0,
       submitShow: false,
       name: '',
+      min: 0,
       formInfo: {
         choiceList: [{
           id: '',
@@ -119,6 +124,7 @@ export default {
         blankList: [],
         judgeList: [],
         totalMark: 0,
+        time: 0,
         creator: sessionStorage.getItem('id')
       },
       rules: {
@@ -215,6 +221,7 @@ export default {
       data.hasBlank = data.blankList.join(',')
       data.hasJudge = data.judgeList.join(',')
       data.id = this.row.id
+      data.time = this.min
       console.log(data)
       this.axios.post('/api/exam/addExam', data)
         .then(res => {

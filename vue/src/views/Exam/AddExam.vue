@@ -23,7 +23,7 @@
                 </el-input>
             </el-form-item>
             <el-form-item label="考试时长" prop="time" class="timeChoice" >
-              <el-input-number size="mini" style="width:100px" controls-position="right" v-model="min" ></el-input-number>
+              <el-input-number :min="20" :max = "180" :step="5" size="mini" style="width:100px" controls-position="right" v-model="min" ></el-input-number>
               <span style="font-size:16px;margin-left:10px;">分钟</span>
             </el-form-item>
           </div >

@@ -9,12 +9,12 @@
         label="#"
         align="center"
         type="index"
-        width="50">
+        min-width ="50">
       </el-table-column>
       <!-- 题干 -->
       <el-table-column
         label="题干"
-        width="280"
+        min-width ="200"
         align="center"
         >
         <template slot-scope="scope">
@@ -30,7 +30,7 @@
       <el-table-column
         label="科目"
         align="center"
-        width="100">
+        min-width ="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.subject }}</span>
         </template>
@@ -39,7 +39,7 @@
       <el-table-column
         label="题型"
         align="center"
-        width="100">
+        min-width ="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.type }}</span>
         </template>
@@ -48,7 +48,7 @@
       <el-table-column
         label="难度"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.difficulty }}</span>
         </template>
@@ -57,7 +57,7 @@
       <el-table-column
         label="创建者"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.creator }}</span>
         </template>
@@ -65,7 +65,7 @@
       <!-- 操作 -->
       <el-table-column
         label="操作"
-         width="200"
+         min-width="150"
         align="center">
         <template slot-scope="scope">
           <el-button
