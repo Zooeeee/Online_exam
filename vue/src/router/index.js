@@ -86,13 +86,15 @@ const routes = [
   },
   {
     path: '*', // 此处需特别注意置于最底部
-    redirect: '/404'
+    redirect: {
+      name: 'notFound'
+    }
   }
 ]
 
 const router = new VueRouter({
-  // mode: 'history',
-  // base: process.env.BASE_URL,
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 

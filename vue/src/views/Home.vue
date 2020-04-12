@@ -116,7 +116,6 @@ export default {
     font-size: 45px;
     margin-top: 45px;
     margin-bottom: 10px;
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
     }
   p{
     margin-top: 10px;
