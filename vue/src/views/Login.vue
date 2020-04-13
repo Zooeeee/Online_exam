@@ -307,6 +307,7 @@ export default {
   position: relative;
   background-size: 1920px 1080px;
   min-height: 100vh;
+   font-family: pingfang;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #242645;

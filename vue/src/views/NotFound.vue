@@ -81,8 +81,8 @@
     <span class="particle">0</span>
     <span class="particle">0</span>
     <article class="content">
-      <p>该死的火星人,</p>
-      <p><strong>404</strong> 错误提示。</p>
+      <p>您访问的页面可能在星辰大海</p>
+      <p><strong>404</strong> 未找到</p>
       <p>
         <a :href="'http://localhost:8080/home'"><button>返回主页.</button></a>
       </p>
@@ -125,8 +125,12 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: white;
-  color: black;
+  // background: white;
+  // color: black;
+  background-color: #00152a;
+  color:#FD0;
+  // color:#8eaeff;
+  //
   font-family: arial, sans-serif;
   overflow: hidden;
 }
@@ -136,7 +140,8 @@ body {
   width: 600px;
   max-width: 100%;
   margin: 20px;
-  background: white;
+  // background: white;
+  background-color: #00152a;
   padding: 60px 40px;
   text-align: center;
   box-shadow: -10px 10px 67px -12px rgba(0, 0, 0, 0.2);
@@ -148,7 +153,10 @@ body {
   margin-top: 0;
   margin-bottom: 0.6rem;
   letter-spacing: 0.1rem;
-  color: #595959;
+  // color: #595959;
+  color:#fff;
+   font-family: pingfang;
+  //
 }
 .content p:last-child {
   margin-bottom: 0;
@@ -160,7 +168,10 @@ body {
   border: 3px solid #595959;
   background: transparent;
   font-size: 1rem;
-  color: #595959;
+  // color: #595959;
+  color:#fff;
+  font-family: pingfang;
+  //
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
