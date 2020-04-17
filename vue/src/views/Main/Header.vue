@@ -1,6 +1,7 @@
 <template>
   <el-row :gutter="0" ref="headerComp">
-    <el-col :xs='24' :sm='24' :md='{span:16,offset:4}' :lg='{span:14,offset:6}' :xl='{span:10,offset:6}'>
+    <el-col :xs='24' :sm='24' :md='{span:16,offset:4}'
+    :lg='{span:14,offset:6}' :xl='{span:10,offset:6}'>
       <el-menu
       class="el-menu-demo"
       mode="horizontal"

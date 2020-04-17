@@ -42,6 +42,7 @@ html , body ,#app{
   padding: 0px;
   height: 100%;
   width: 100%;
+  font-family: "SiYuan";
 }
 .icon {
   width: 1em;
@@ -51,9 +52,9 @@ html , body ,#app{
   overflow: hidden;
 }
 p{
-  font-family: "pingfang";
+  font-family: "SiYuan";
 }
 b{
-   font-family: "pingfang";
+   font-family: "SiYuan";
 }
 </style>

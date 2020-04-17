@@ -53,26 +53,21 @@ public class TokenUtil {
      * @return token String
      */
     public static String createJwtToken(String id, String issuer, String subject, long ttlMillis) {
-
         // 签名算法 ，将对token进行签名
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
-
         // 生成签发时间
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
-
         // 通过秘钥签名JWT
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SECRET);
         String str = signatureAlgorithm.getJcaName();
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, str);
-
         // 让我们设置JWT声明
         JwtBuilder builder = Jwts.builder().setId(id)
                 .setIssuedAt(now)
                 .setSubject(subject)
                 .setIssuer(issuer)
                 .signWith(signatureAlgorithm, signingKey);
-
         // 有效时间设置
         if (ttlMillis >= 0) {
             //过期时间
@@ -80,10 +75,8 @@ public class TokenUtil {
             Date exp = new Date(expMillis);
             builder.setExpiration(exp);
         }
-
         // 构建JWT并将其序列化为一个紧凑的url安全字符串
         return builder.compact();
-
     }
 
     /**

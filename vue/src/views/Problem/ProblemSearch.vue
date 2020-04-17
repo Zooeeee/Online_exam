@@ -46,12 +46,12 @@
         label="#"
         align="center"
         type="index"
-        width="50">
+        min-width="50">
       </el-table-column>
       <!-- 题干 -->
       <el-table-column
         label="题干"
-        width="280"
+         min-width="200"
         align="center"
         >
         <template slot-scope="scope">
@@ -67,7 +67,7 @@
       <el-table-column
         label="科目"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.subject }}</span>
         </template>
@@ -76,7 +76,7 @@
       <el-table-column
         label="题型"
         align="center"
-        width="100">
+         min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.type }}</span>
         </template>
@@ -85,7 +85,7 @@
       <el-table-column
         label="难度"
         align="center"
-        width="100">
+        min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.difficulty }}</span>
         </template>
@@ -94,7 +94,7 @@
       <el-table-column
         label="创建者"
         align="center"
-        width="100">
+         min-width="100">
         <template slot-scope="scope">
           <span   >{{ scope.row.creator }}</span>
         </template>
@@ -102,7 +102,7 @@
       <!-- 操作 -->
       <el-table-column
         label="操作"
-         width="200"
+         min-width="150"
         align="center">
         <template slot-scope="scope">
           <el-button
@@ -188,20 +188,35 @@ export default {
     },
     // 点击删除
     handleDelete (index, row) {
+      this.$confirm('此操作将永久删除记录, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.axios.post('/api/problem/deleteProblemById?id=' + row.id)
+          .then(res => {
+            if (res.data === '删除成功') {
+              this.$notify.info({
+                title: '消息',
+                message: res.data
+              })
+              util.tableDataLikeAxios(this.selectCondition, this)
+            }
+          })
+          .catch(err => {
+            console.error(err)
+          })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        }) // then-end
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      }) // catch-end
       // console.log(row.id)
-      this.axios.post('/api/problem/deleteProblemById?id=' + row.id)
-        .then(res => {
-          if (res.data === '删除成功') {
-            this.$notify.info({
-              title: '消息',
-              message: res.data
-            })
-            util.tableDataLikeAxios(this.selectCondition, this)
-          }
-        })
-        .catch(err => {
-          console.error(err)
-        })
       // 重新渲染页面
     },
     // 搜索条件重置

@@ -140,20 +140,35 @@ export default {
     },
     // 点击删除
     handleDelete (index, row) {
-      console.log(row.id)
-      this.axios.post('/api/problem/deleteProblemById?id=' + row.id)
-        .then(res => {
-          if (res.data === '删除成功') {
-            this.$notify.info({
-              title: '消息',
-              message: res.data
-            })
-            util.tableDataPageAxios(this.pageInfo.page, this.pageInfo.size, this)
-          }
+      this.$confirm('此操作将永久删除记录, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.axios.post('/api/problem/deleteProblemById?id=' + row.id)
+          .then(res => {
+            if (res.data === '删除成功') {
+              this.$notify.info({
+                title: '消息',
+                message: res.data
+              })
+              util.tableDataPageAxios(this.pageInfo.page, this.pageInfo.size, this)
+            }
+          })
+          .catch(err => {
+            console.error(err)
+          })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        }) // then-end
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         })
-        .catch(err => {
-          console.error(err)
-        })
+      }) // catch-end
+      // console.log(row.id)
       // 重新渲染页面
     },
     handleSizeChange (size) {

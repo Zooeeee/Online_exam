@@ -37,7 +37,8 @@
             </el-row>
             <!-- 下半部分 -->
             <el-row class="down">
-              <el-col :span="8" v-for="(item, index) in this.cardData" :key="index">
+              <el-col :xs='12' :sm='12' :md='12' :lg='8' :xl='8'
+              v-for="(item, index) in this.cardData" :key="index">
                 <IconCard :icon="item.icon" :textA="item.textA" :textB="item.textB">
                 </IconCard>
               </el-col>
@@ -129,9 +130,9 @@ export default {
 .el-footer{
     background-color: #F1F2F6;
     width:100%;
-    position:absolute;
-    bottom:0;
-    left:0;
+    // position:absolute;
+    // bottom:0;
+    // left:0;
     text-align: center;
     line-height: 20px;
     height: 45px !important;

@@ -156,16 +156,31 @@ export default {
     },
     // 点击删除
     handleDelete (index, row) {
+      this.$confirm('此操作将永久删除记录, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
       // console.log('选取的id' + row.id)
-      const that = this
-      this.axios.post('/api/exam/deleteExamById?id=' + row.id)
-        .then(res => {
-          /// console.log(res)
-          util.examPageAxios(that)
+        const that = this
+        this.axios.post('/api/exam/deleteExamById?id=' + row.id)
+          .then(res => {
+            /// console.log(res)
+            util.examPageAxios(that)
+          })
+          .catch(err => {
+            console.error(err)
+          })
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        }) // then-end
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         })
-        .catch(err => {
-          console.error(err)
-        })
+      }) // catch-end
     },
     // 改变页面尺寸和页码
     handleSizeChange (size) {

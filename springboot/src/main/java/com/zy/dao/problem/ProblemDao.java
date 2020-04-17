@@ -23,7 +23,9 @@ public interface ProblemDao extends JpaRepository<Problem,Integer>{
     * 根据name type creator subject difficulty 来模糊查询problemVo
     * */
     @Query("select new com.zy.vo.problem.ProblemVo(p.id,t.type,s.subject,p.name,p.answer,p.content,p.analysis,d.difficulty,u.nickName) " +
-            "FROM Problem as p left join ProblemToType as t on p.type = t.id left join ProblemToDifficulty as d on p.difficulty = d.id  left join ProblemToSubject as s on p.subject= s.id left join User as u on p.creator = u.id " +
+            "FROM Problem as p left join ProblemToType as t on p.type = t.id " +
+            "left join ProblemToDifficulty as d on p.difficulty = d.id  " +
+            "left join ProblemToSubject as s on p.subject= s.id left join User as u on p.creator = u.id " +
             "where s.subject like CONCAT('%',?3,'%')  " +
             "and t.type like CONCAT('%',?2,'%') " +
             "and d.difficulty like CONCAT('%',?4,'%') " +

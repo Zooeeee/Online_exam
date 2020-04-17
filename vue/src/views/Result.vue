@@ -69,6 +69,7 @@
           <el-button
             size="mini"
             type="danger"
+            v-if="role === 'teacher'?true:false"
             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -83,10 +84,12 @@ export default {
     return {
       searchData: null,
       tableData: null,
-      search: ''
+      search: '',
+      role: 'teacher'
     }
   },
   created () {
+    this.role = sessionStorage.getItem('role')
     this.axios.post('/api/result/getResultVo?role=' + sessionStorage.getItem('role') + '&id=' + sessionStorage.getItem('id'))
       .then(res => {
         this.tableData = res.data
@@ -101,7 +104,8 @@ export default {
   },
   methods: {
     searchChange () {
-      this.searchData = this.tableData.filter(ele => ele.stuNickname.indexOf(this.search) > -1 || ele.name.indexOf(this.search) > -1)
+      this.searchData = this.tableData.filter(ele =>
+        ele.stuNickname.indexOf(this.search) > -1 || ele.name.indexOf(this.search) > -1)
     },
     // 点击查看，跳到新页面
     handleClick (index, row) {
@@ -115,15 +119,30 @@ export default {
     },
     // 点击删除
     handleDelete (index, row) {
-      console.log(row.resultId)
-      this.axios.post('/api/result/deleteOneResult?resultId=' + row.resultId)
-        .then(res => {
-          console.log(res)
-          this.reload()
+      this.$confirm('此操作将永久删除记录, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.axios.post('/api/result/deleteOneResult?resultId=' + row.resultId)
+          .then(res => {
+            console.log(res)
+            this.reload()
+          })
+          .catch(err => {
+            console.error(err)
+          })// axxios-end
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        }) // then-end
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         })
-        .catch(err => {
-          console.error(err)
-        })
+      }) // catch-end
+      // console.log(row.resultId)
     }
   }
 }

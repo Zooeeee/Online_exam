@@ -32,12 +32,6 @@ const routes = [
         component: Exam,
         meta: ['在线考试系统', '考试管理', '详情']
       },
-      // {
-      //   path: '/home',
-      //   name: 'home',
-      //   component: Home,
-      //   meta: ['在线考试系统', '首页', '详情']
-      // },
       {
         path: '/result',
         name: 'result',
