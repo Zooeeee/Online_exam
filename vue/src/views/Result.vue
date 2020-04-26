@@ -11,6 +11,7 @@
       </el-input>
     </el-tooltip>
     <el-table
+     v-loading.lock="loading"
       :data="searchData"
       style="width: 100%"
       :height = "700"
@@ -27,7 +28,7 @@
         align="center"
         min-width="100">
         <template slot-scope="scope">
-         <el-avatar :size="50" :src="'http://localhost/img/avatar/' + scope.row.avatar"></el-avatar>
+         <el-avatar :size="50" :src="$store.getters.getServerUrl + '/img/avatar/' + scope.row.avatar"></el-avatar>
         </template>
       </el-table-column>
       <!-- 考生姓名 -->
@@ -79,9 +80,9 @@
 
 <script>
 export default {
-  inject: ['reload'],
   data () {
     return {
+      loading: true,
       searchData: null,
       tableData: null,
       search: '',
@@ -95,6 +96,7 @@ export default {
         this.tableData = res.data
         this.searchData = res.data
         console.log(this.tableData)
+        this.loading = false
       })
       .catch(err => {
         console.error(err)

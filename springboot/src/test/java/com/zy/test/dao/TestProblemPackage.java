@@ -1,16 +1,12 @@
 package com.zy.test.dao;
 
-import com.zy.dao.problem.ProblemDao;
 import com.zy.dao.problem.ProblemPackageDao;
-import com.zy.model.problem.Problem;
 import com.zy.service.problem.ProblemPackageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
-import sun.tools.jstat.Literal;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,10 +6,12 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
+import loading from 'vue-nice-loading'
 
 Vue.config.productionTip = false
 // 引入 element ui
 Vue.use(ElementUI)
+Vue.use(loading)
 Vue.prototype.axios = axios
 
 new Vue({

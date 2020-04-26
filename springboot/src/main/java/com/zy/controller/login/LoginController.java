@@ -2,10 +2,10 @@ package com.zy.controller.login;
 
 import com.zy.model.user.User;
 import com.zy.service.user.UserSevice;
+import com.zy.utils.Configure;
 import com.zy.utils.TokenUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,7 +41,7 @@ public class LoginController {
             map.put("status","200");
             map.put("role",user.getRole());
             map.put("power",user.getPower());
-            map.put("avatar","http://localhost/img/avatar/" + user.getAvatar());
+            map.put("avatar", Configure.serverUrl + "/img/avatar/" + user.getAvatar());
             //生成token，参数是用户id和用户名
         //    System.out.println(user.getId().toString());
             String token = TokenUtil.createJwtToken(user.getId().toString(),user.getNickName());

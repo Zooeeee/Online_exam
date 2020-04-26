@@ -6,6 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // 请求服务器地址
+    serverUrl: 'http://127.0.0.1:80',
     // 存储User个人信息
     userInfo: {
       avatar: sessionStorage.getItem('avatar') === '' ? '' : sessionStorage.getItem('avatar'),
@@ -19,6 +21,10 @@ export default new Vuex.Store({
     allExamVo: []
   },
   getters: {
+    // 获取地址
+    getServerUrl (state) {
+      return state.serverUrl
+    },
     // 获取User个人信息
     getUserAvatar (state) {
       return state.userInfo.avatar
@@ -67,13 +73,15 @@ export default new Vuex.Store({
     },
     // 获取takeExam界面的所有考试信息
     // 利用state做一次缓存 提高运行效率
-    getAllExamVo (store) {
+    getAllExamVo (store, that) {
       if (store.state.allExamVo.length === 0) {
         // console.log('store.state.allExamVo.length === 0')
+        that.loading = true
         axios.post('api/exam/getAllExamVoPage')
           .then(res => {
             store.commit('setAllExamVo', res.data)
             console.log('出现一次vuex的请求，若出现第二次则未实现缓存效果')
+            that.loading = false
           })
           .catch(err => {
             console.error(err)

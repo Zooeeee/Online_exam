@@ -28,7 +28,7 @@ export default {
     // console.log('===============')
     // console.log(this.userInfo)
     // console.log(this.examData)
-    this.creatorAvatar = 'http://localhost:80/img/avatar/' + this.examData.avatar
+    this.creatorAvatar = this.$store.getters.getServerUrl + '/img/avatar/' + this.examData.avatar
     this.userAvatar = this.userInfo.avatar
   },
   methods: {

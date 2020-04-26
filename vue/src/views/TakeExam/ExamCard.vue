@@ -4,7 +4,7 @@
         <el-card  shadow="hover" :body-style="{ padding: '0px' }" >
           <el-row class = "cardBody" >
             <el-col :span="6" :offset="1" class="cardAvatar" >
-              <el-avatar :size="70" :src="'http://localhost/img/avatar/' + this.data.avatar "></el-avatar>
+              <el-avatar :size="70" :src="$store.getters.getServerUrl +'/img/avatar/' + this.data.avatar "></el-avatar>
             </el-col>
             <el-col :span="15" class="cardInfo">
               <h4>{{this.data.name}}</h4>
@@ -23,6 +23,7 @@
 
 <script>
 export default {
+  inject: ['serverUrl'],
   props: ['data'],
   data () {
     return {

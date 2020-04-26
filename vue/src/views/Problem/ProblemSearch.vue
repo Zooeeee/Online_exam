@@ -41,6 +41,7 @@
       style="width: 100%"
       :height = "600"
       v-show="tableShow"
+      v-loading.lock="this.loading"
       >
       <el-table-column
         label="#"
@@ -130,6 +131,7 @@ export default {
   components: { EditProblem },
   data () {
     return {
+      loading: true,
       tableShow: false,
       condition: {
       },

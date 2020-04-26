@@ -1,5 +1,5 @@
 <template>
-  <div class = "main" >
+  <div class = "main" v-loading.lock="loading">
     <el-col  :xs='24' :sm='12' :md='8' :lg='8' :xl='8' v-for="(item, index) in this.$store.getters.getAllExamVo" :key="index">
       <ExamCard :data = "item" ></ExamCard>
     </el-col>
@@ -15,12 +15,12 @@ export default {
   components: { ExamCard },
   data () {
     return {
-
+      loading: false
     }
   },
   created () {
     // this.$store.dispagetAllExamVo()
-    this.$store.dispatch('getAllExamVo')
+    this.$store.dispatch('getAllExamVo', this)
   },
   mounted () {
     // console.log(this.$store.getters.getAllExamVo)

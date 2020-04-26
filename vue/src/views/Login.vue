@@ -1,5 +1,9 @@
 <template>
-  <div id='login'>
+  <transition name="el-fade-in-linear">
+  <div id='login' v-show="isShow">
+    <!-- <img src='../assets/img/Starry.jpg' alt="" width="100%" height="100%"
+    style="float:left;z-index:-1;"
+    > -->
     <div id='bgd'>
       <canvas
         id='myCanvas'
@@ -63,6 +67,7 @@
       </el-form>
     </div>
   </div>
+    </transition>
 </template>
 
 <script>
@@ -72,6 +77,7 @@ import jwtDecode from 'jwt-decode'
 export default {
   data () {
     return {
+      isShow: false,
       canvas: null,
       context: null,
       stars: [], // 星星数组
@@ -135,6 +141,19 @@ export default {
         ]
       }
     }
+  },
+  beforeCreate () {
+    // 显示loading
+    const loading = this.$loading({
+      text: '努力加载中',
+      background: '#00152A',
+      type: 'circles'
+    })
+    // 关闭loading
+    setTimeout(() => {
+      loading.close()
+      this.isShow = true
+    }, 3000)
   },
   methods: {
     // 提交登录
@@ -290,6 +309,7 @@ export default {
     this.drawFrame()
 
     sessionStorage.clear()
+    // alert('mouted')
   }
 }
 </script>
@@ -303,7 +323,7 @@ export default {
   font-size: 16px ;
   color: #fff;
   font-family: 'Source Sans Pro';
-  background-image: url('../assets/img/Starry.jpg');
+  background-image: url('http://127.0.0.1:80/img/home/Starry.jpg');
   position: relative;
   background-size: 1920px 1080px;
   min-height: 100vh;

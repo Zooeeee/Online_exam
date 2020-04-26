@@ -28,7 +28,7 @@
                   <el-carousel-item v-for="item in 5" :key="item">
                     <el-image
                       style="width: 100%; height: 100%"
-                      :src="'http://localhost/img/home/'+item+'.png'"
+                      :src="$store.getters.getServerUrl +'/img/home/'+item+'.png'"
                       fit="fit">
                     </el-image>
                   </el-carousel-item>

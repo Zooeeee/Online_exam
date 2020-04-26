@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-loading.fullscreen.lock="loading">
       <el-container>
         <el-header class="header">
           <SeePaperHeader></SeePaperHeader>
@@ -91,6 +91,7 @@ export default {
   components: { SeePaperHeader },
   data () {
     return {
+      loading: true,
       // 控制某个item显示
       showItem: 1,
       initData: {},
@@ -129,6 +130,7 @@ export default {
           res.data.proInfo.judgeList[i].write = res.data.ansInfo.judgeAnswer[i].write
           res.data.proInfo.choiceList[i].mark = this.judgeMark
         }
+        this.loading = false
         // end
       })
       .catch(err => {

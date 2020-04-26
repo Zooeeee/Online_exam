@@ -1,7 +1,7 @@
 <template>
    <el-row>
       <el-col :xs='24' :sm='12' :md='{span:8,offset:0}' :lg='{span:8,offset:0}' :xl='{span:6,offset:2}' class="left">
-        <el-avatar :size="55" :src="'http://localhost/img/avatar/' +this.creatorInfo.avatar" ></el-avatar>
+        <el-avatar :size="55" :src="$store.getters.getServerUrl +'/img/avatar/' +this.creatorInfo.avatar" ></el-avatar>
         <h3> {{ this.initData.name }} </h3>
         <p> {{ this.initData.des }}</p>
       </el-col>
@@ -13,7 +13,7 @@
         <p>分</p>
       </el-col>
       <el-col :xs='24' :sm='24' :md='{span:8,offset:0}' :lg='{span:8,offset:0}' :xl='{span:6,offset:2}' class="right">
-        <el-avatar :size="50" :src="'http://localhost/img/avatar/' +this.initData.avatar" ></el-avatar>
+        <el-avatar :size="50" :src=" $store.getters.getServerUrl +'/img/avatar/' +this.initData.avatar" ></el-avatar>
         <h5> {{ this.initData.stuNickname }} </h5>
       </el-col>
    </el-row>

@@ -1,6 +1,5 @@
 package com.zy.test.dao;
 
-import com.sun.media.sound.SoftTuning;
 import com.zy.dao.exam.ExamDao;
 import com.zy.dao.problem.ProblemDao;
 import com.zy.model.exam.Exam;
@@ -11,16 +10,12 @@ import com.zy.vo.exam.ExamVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.event.ItemEvent;
-import java.security.Key;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

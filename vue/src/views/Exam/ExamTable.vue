@@ -1,6 +1,7 @@
 <template>
   <div>
     <el-table
+     v-loading.lock="loading"
       :data="tableData"
       style="width: 100%"
       :height = "650"
@@ -127,6 +128,7 @@ export default {
   components: { EditExam },
   data () {
     return {
+      loading: true,
       row: {},
       editDialogFormVisible: false,
       pageInfo: {

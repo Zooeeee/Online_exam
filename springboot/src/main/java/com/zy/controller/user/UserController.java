@@ -3,6 +3,7 @@ package com.zy.controller.user;
 import com.zy.jsonBean.user.UserNickNameAndEmailBean;
 import com.zy.model.user.User;
 import com.zy.service.user.UserSevice;
+import com.zy.utils.Configure;
 import com.zy.utils.TokenUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.security.Provider;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -99,7 +101,7 @@ public class UserController {
 
             //通过service层保存数据
             User user = userSevice.setUserAvatar(id, newFileName);
-            return  "http://localhost/img/avatar/" + user.getAvatar();
+            return Configure.serverUrl +  "/img/avatar/" + user.getAvatar();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return "上传失败," + e.getMessage();

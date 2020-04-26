@@ -84,7 +84,7 @@
       <p>您访问的页面可能在星辰大海</p>
       <p><strong>404</strong> 未找到</p>
       <p>
-        <a :href="'http://localhost:8080/home'"><button>返回主页.</button></a>
+        <a @click="handleA()"><button>返回主页.</button></a>
       </p>
     </article>
   </main>
@@ -104,7 +104,9 @@ export default {
 
   },
   methods: {
-
+    handleA () {
+      this.$router.push({ name: 'home' })
+    }
   }
 }
 </script>
