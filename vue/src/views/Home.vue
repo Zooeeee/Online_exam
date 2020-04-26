@@ -79,8 +79,8 @@ export default {
         },
         {
           icon: '#icon-shejimdpi',
-          textA: '常见设计模式',
-          textB: '提炼自中后台应用的典型页面和场景'
+          textA: '页面缓存',
+          textB: '特殊场景中使用以减轻负载'
         },
         {
           icon: '#icon-quanxianshezhi',

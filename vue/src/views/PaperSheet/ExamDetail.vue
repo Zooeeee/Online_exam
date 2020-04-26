@@ -118,6 +118,9 @@ export default {
       if (maxtime >= 0) {
         minutes = Math.floor(maxtime / 60)
         seconds = Math.floor(maxtime % 60)
+        if (minutes < 10) minutes = '0' + minutes
+        if (seconds < 10) seconds = '0' + seconds
+        this.time = minutes + ':' + seconds
       } else {
         // 清空定时器
         this.time = '00:00'
@@ -126,11 +129,9 @@ export default {
           message: '时间已经结束，已为您自动交卷',
           type: 'warning'
         })
-        // todo  自动交卷
+        // 交卷
+        this.submitForm()
       }
-      if (minutes < 10) minutes = '0' + minutes
-      if (seconds < 10) seconds = '0' + seconds
-      this.time = minutes + ':' + seconds
     }, 1000)
   },
   mounted () {
