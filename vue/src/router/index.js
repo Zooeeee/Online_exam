@@ -8,7 +8,7 @@ import Result from '@/views/Result.vue'
 import Problem from '@/views/Problem.vue'
 import TakeExam from '@/views/TakeExam.vue'
 import Home from '@/views/Home.vue'
-import ExamDetail from '@/views/PaperSheet/ExamDetail.vue'
+import ExamDetail from '@/views/TakeExam/ExamDetail.vue'
 import SeePaper from '@/views/Result/SeePaper.vue'
 import Main from '@/views/Main.vue'
 

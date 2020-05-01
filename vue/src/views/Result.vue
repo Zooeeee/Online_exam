@@ -44,9 +44,18 @@
       <el-table-column
         label="考试名称"
         align="center"
-        min-width="180">
+        min-width="150">
         <template slot-scope="scope">
           <span   >{{ scope.row.name }}</span>
+        </template>
+      </el-table-column>
+      <!-- 考试分数 -->
+      <el-table-column
+        label="考试分数"
+        align="center"
+        min-width="150">
+        <template slot-scope="scope">
+          <span   >{{ scope.row.totalMark }}</span>
         </template>
       </el-table-column>
       <!-- 考试时间 -->

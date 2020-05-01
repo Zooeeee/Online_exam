@@ -23,7 +23,6 @@
 
 <script>
 export default {
-  inject: ['serverUrl'],
   props: ['data'],
   data () {
     return {

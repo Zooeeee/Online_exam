@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import PaperSheetHeader from '@/views/PaperSheet/PaperSheetHeader.vue'
+import PaperSheetHeader from '@/views/TakeExam/PaperSheetHeader.vue'
 export default {
   components: { PaperSheetHeader },
   data () {
@@ -125,12 +125,13 @@ export default {
         // 清空定时器
         this.time = '00:00'
         this.timer = null
-        this.$message({
-          message: '时间已经结束，已为您自动交卷',
-          type: 'warning'
+        //   this.$alert('详细信息请在试卷列表查看', '您的成绩为 ' + this.totalMark + ' 分'
+        this.$alert('考试失败', '时间已经结束', {
+          confirmButtonText: '关闭考试',
+          callback: acion => {
+            window.close()
+          }
         })
-        // 交卷
-        this.submitForm()
       }
     }, 1000)
   },
@@ -188,25 +189,38 @@ export default {
       const choiceData = []
       const blankData = []
       const judgeData = []
+      // 选择题封装
       for (let index = 0; index < this.choiceAnswer.length; index++) {
-        choiceData.push({
-          proId: this.problemList.choiceList[index].id,
-          write: this.choiceAnswer[index].value
-        })
+        if (this.choiceAnswer[index].value !== '') {
+          choiceData.push({
+            proId: this.problemList.choiceList[index].id,
+            write: this.choiceAnswer[index].value
+          })
+        } else {
+          return this.$message.error(`单选题${index + 1}未完成,请查看`)
+        }
       }
       // 填空题题封装
       for (let index = 0; index < this.blankAnswer.length; index++) {
-        blankData.push({
-          proId: this.problemList.blankList[index].id,
-          write: this.blankAnswer[index].value
-        })
+        if (this.blankAnswer[index].value !== '') {
+          blankData.push({
+            proId: this.problemList.blankList[index].id,
+            write: this.blankAnswer[index].value
+          })
+        } else {
+          return this.$message.error(`填空题${index + 1}未完成,请查看`)
+        }
       }
       // 判断题封装
       for (let index = 0; index < this.judgeAnswer.length; index++) {
-        judgeData.push({
-          proId: this.problemList.judgeList[index].id,
-          write: this.judgeAnswer[index].value
-        })
+        if (this.judgeAnswer[index].value !== '') {
+          judgeData.push({
+            proId: this.problemList.judgeList[index].id,
+            write: this.judgeAnswer[index].value
+          })
+        } else {
+          return this.$message.error(`判断题${index + 1}未完成,请查看`)
+        }
       }
       // 这里来计算分数
       let choiceCount = 0
@@ -241,7 +255,13 @@ export default {
       this.axios.post('/api/result/addResult', subData)
         .then(res => {
           console.log(res)
-          this.$alert('详细信息请在试卷列表查看', '您的成绩为 ' + this.totalMark + ' 分')
+          this.$alert('详细信息请在试卷列表查看', '您的成绩为 ' + this.totalMark + ' 分', {
+            confirmButtonText: '确定',
+            callback: acion => {
+              window.close()
+            }
+          })
+          // window.close()
         })
         .catch(err => {
           console.error(err)

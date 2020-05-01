@@ -28,7 +28,7 @@
       </el-menu>
     </el-col>
     <el-col :xs='24' :sm='24' :md= '4' :lg='4' :xl='8' class="user" >
-      <el-avatar :src="this.$store.getters.getUserAvatar" size="large" style="cursor: pointer;"  ></el-avatar>
+      <el-avatar :src="this.$store.getters.getUserAvatar" size="large"   ></el-avatar>
       <el-dropdown  @command="handleCommand">
         <span class="el-dropdown-link" style="cursor: pointer;" >
           {{ this.$store.getters.getUserNickName}}

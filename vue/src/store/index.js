@@ -7,6 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 请求服务器地址
+    // http://127.0.0.1:80
+    // http://120.79.183.71:80
     serverUrl: 'http://127.0.0.1:80',
     // 存储User个人信息
     userInfo: {

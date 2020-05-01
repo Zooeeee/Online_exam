@@ -1,7 +1,7 @@
 <template>
   <div class = "main" v-loading.lock="loading">
     <el-col  :xs='24' :sm='12' :md='8' :lg='8' :xl='8' v-for="(item, index) in this.$store.getters.getAllExamVo" :key="index">
-      <ExamCard :data = "item" ></ExamCard>
+      <ExamCard :data = "item" class="ExamCard"></ExamCard>
     </el-col>
     <!-- <ExamCard class="ExamCard" v-for="(item, index) in 20" :key="index"></ExamCard> -->
       <el-backtop target=".main" :bottom="100">
@@ -36,5 +36,7 @@ export default {
   .el-col{
     height: calc(20vh);
     margin:20px 0 20px 0;
+    min-height: 175px;
   }
+
 </style>

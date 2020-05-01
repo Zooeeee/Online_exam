@@ -75,6 +75,6 @@ export default {
 .main{
   margin-top: 15px;
   background-color: #fff;
-  min-height: calc(100vh - 5vh - 130px)
+  min-height: calc(100vh - 5vh - 120px);
 }
 </style>

@@ -109,6 +109,7 @@ export default {
     this.axios.post('/api/result/getOneResultPaperInfo?resultId=' + this.initData.resultId + '&examId=' + this.initData.examId)
       .then(res => {
         console.log(res.data.proInfo)
+        this.showItem = res.data.proInfo.choiceList[0].id || res.data.proInfo.blankList[0].id || res.data.proInfo.judgeList[0].id
         console.log(res.data.ansInfo)
         this.ansInfo = res.data.ansInfo
         this.choiceList = res.data.proInfo.choiceList
