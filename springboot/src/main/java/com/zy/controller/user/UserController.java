@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,6 +59,10 @@ public class UserController {
         return "200";
     }
 
+    @RequestMapping("/getAllUser")
+    public List<User> getAllUser(){
+        return userSevice.getAllUser();
+    }
 
     /**
     * @methodsName: uploadAvatar

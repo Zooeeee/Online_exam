@@ -11,6 +11,7 @@ import Home from '@/views/Home.vue'
 import ExamDetail from '@/views/TakeExam/ExamDetail.vue'
 import SeePaper from '@/views/Result/SeePaper.vue'
 import Main from '@/views/Main.vue'
+import UserList from '@/views/UserList.vue'
 
 Vue.use(VueRouter)
 
@@ -55,6 +56,12 @@ const routes = [
         name: 'takeList',
         component: TakeExam,
         meta: ['在线考试系统', '参加考试', '详情']
+      },
+      {
+        path: '/UserList',
+        name: 'userList',
+        component: UserList,
+        meta: ['在线考试系统', '用户列表', '详情']
       }
     ]
   },

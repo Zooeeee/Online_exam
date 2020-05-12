@@ -20,7 +20,9 @@ export default new Vuex.Store({
       count: 0
     },
     // 存储takeExam页面的所有考试信息
-    allExamVo: []
+    allExamVo: [],
+    // 存储userList
+    userList: []
   },
   getters: {
     // 获取地址
@@ -41,6 +43,10 @@ export default new Vuex.Store({
     // 获取takeExam页面的所有考试信息
     getAllExamVo (state) {
       return state.allExamVo
+    },
+    // 获取userList的userList
+    getUserList (state) {
+      return state.userList
     }
   },
   mutations: {
@@ -60,6 +66,10 @@ export default new Vuex.Store({
     // 设置takeExam页面的所有考试信息
     setAllExamVo (state, data) {
       state.allExamVo = data
+    },
+    // 设置userList
+    setUserList (state, data) {
+      state.userList = data
     }
   },
   actions: {
@@ -88,6 +98,18 @@ export default new Vuex.Store({
           .catch(err => {
             console.error(err)
           })
+      }
+    },
+    // 获得userList
+    getUserList (store) {
+      if (store.state.userList.length === 0) {
+        axios.post('/api/user/getAllUser')
+          .then((res) => {
+            console.log('走请求')
+            store.commit('setUserList', res.data)
+          })
+      } else {
+        console.log('走缓存')
       }
     }
   },

@@ -14,7 +14,7 @@
      v-loading.lock="loading"
       :data="searchData"
       style="width: 100%"
-      :height = "700"
+      :height = "600"
     >
       <el-table-column
         label="#"

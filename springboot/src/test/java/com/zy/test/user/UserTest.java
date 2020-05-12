@@ -11,6 +11,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Zy
  * @date 2020/3/31 12:26
@@ -25,9 +28,11 @@ public class UserTest {
 
     @Test
     public void testAvatarUploader(){
-        Integer id = 1 ;
-        String src = "1585628741786.jpg";
-        System.out.println(userSevice.setUserAvatar(id,src));
+        List<User> list = new ArrayList();
+        list = userDao.findAll();
+        list.forEach(ele->{
+            System.out.println(ele);
+        });
     }
 
     @Test
@@ -38,4 +43,26 @@ public class UserTest {
         one.setAvatar("11");
         userDao.save(one);
     }
+
+    @Test()
+    @Transactional
+    @Rollback(value = false)
+    public void addUsers(){
+
+        List<User> list = new ArrayList<>();
+        for (int i = 1 ; i <= 100000 ; i++){
+            User one = new User();
+            one.setUsername("这是第"+i+"个用户名");
+            one.setPassword("这是第"+i+"个密码");
+            one.setRole("teacher");
+            one.setNickName("这是第"+i+"个昵称");
+            one.setPower("exam,problem,result,userList");
+            one.setAvatar("1587866861977.jpg");
+            one.setEmail("这是第"+i+"个邮箱@qq.com");
+            list.add(one);
+        }
+        userDao.saveAll(list);
+
+    }
+
 }

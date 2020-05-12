@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * @author Zy
@@ -73,5 +76,14 @@ public class UserSevice  {
         one.setPassword(password);
         userDao.save(one);
         return one;
+    }
+
+
+    public List<User> getAllUser(){
+        List<User> list = new ArrayList();
+        list = userDao.findAll();
+        return list;
+
+
     }
 }

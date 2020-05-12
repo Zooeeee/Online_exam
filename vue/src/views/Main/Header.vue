@@ -70,6 +70,12 @@ export default {
           path: '/result',
           des: '试卷列表',
           class: 'el-icon-tickets'
+        },
+        {
+          name: 'userList',
+          path: '/userList',
+          des: '用户列表',
+          class: 'el-icon-user'
         }
       ],
       showList: []

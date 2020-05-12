@@ -4,7 +4,7 @@
      v-loading.lock="loading"
       :data="tableData"
       style="width: 100%"
-      :height = "650"
+      :height = "600"
       >
       <el-table-column
         label="#"
